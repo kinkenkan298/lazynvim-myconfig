@@ -1,16 +1,28 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    'saghen/blink.compat',
+    version = '*',
+    lazy = true,
+    opts = {},
+  },
+  {
+    'saghen/blink.cmp',
+    version = '0.*',
     dependencies = {
-      "jose-elias-alvarez/typescript.nvim",
-      init = function()
-        require("lazyvim.util").lsp.on_attach(function(_, buffer)
-          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
-        end)
-      end,
+      { 'hrsh7th/cmp-nvim-lua' },
+    },
+    sources = {
+      completion = {
+        enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'nvim_lua' },
+      },
+      providers = {
+        nvim_lua = {
+          name = 'nvim_lua', 
+          module = 'blink.compat.source',
+          score_offset = -3,
+          opts = {},
+        },
+      },
     },
   },
-
-  { import = "lazyvim.plugins.extras.lang.typescript" },
 }
