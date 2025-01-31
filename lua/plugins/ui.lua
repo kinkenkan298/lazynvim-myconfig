@@ -1,29 +1,5 @@
 return {
   {
-    "NvChad/nvim-colorizer.lua",
-    lazy = true,
-    event = { "BufRead", "InsertEnter", "BufNewFile" },
-    opts = {
-      user_default_options = {
-        RGB = true,
-        RRGGBB = true,
-        names = true,
-        RRGGBBAA = true,
-        rgb_fn = true,
-        hsl_fn = true,
-        css = true,
-        css_fn = true, 
-        mode = "background",
-        tailwind = true,
-      },
-      filetypes = {
-        "*", 
-        css = { rgb_fn = true },
-        html = { names = false },
-      },
-    },
-  },
-  {
     "hiphish/rainbow-delimiters.nvim",
     lazy = true,
     event = "BufRead",
@@ -110,7 +86,9 @@ return {
             icon = " ",
             title = "Git Status",
             section = "terminal",
-            enabled = function() return Snacks.git.get_root() ~= nil end,
+            enabled = function()
+              return Snacks.git.get_root() ~= nil
+            end,
             cmd = "hub status --short --branch --renames",
             height = 5,
             padding = 1,
@@ -122,11 +100,11 @@ return {
       },
     },
   },
-    {
+  {
     "b0o/incline.nvim",
     event = "BufReadPre",
     dependencies = {
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     keys = {
       {

@@ -6,15 +6,15 @@ return {
     config = function()
       require("catppuccin").setup({
         flavour = "auto",
-        background = { 
+        background = {
           light = "latte",
           dark = "mocha",
         },
-        transparent_background = false, 
-        show_end_of_buffer = false, 
-        term_colors = false, 
+        transparent_background = false,
+        show_end_of_buffer = false,
+        term_colors = false,
         dim_inactive = {
-          enabled = false, 
+          enabled = false,
           shade = "dark",
           percentage = 0.15, -- percentage of the shade to apply to the inactive window
         },
@@ -24,16 +24,6 @@ return {
         styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
           comments = { "italic" }, -- Change the style of comments
           conditionals = { "italic" },
-          loops = {},
-          functions = {},
-          keywords = {},
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-          operators = {},
         },
         highlight_overrides = {
           all = function(colors)
@@ -64,29 +54,6 @@ return {
         },
         color_overrides = {
           mocha = {
-            -- rosewater = "#F5B8AB",
-            -- flamingo = "#F29D9D",
-            -- pink = "#AD6FF7",
-            -- mauve = "#FF8F40",
-            -- red = "#E66767",
-            -- maroon = "#EB788B",
-            -- peach = "#FAB770",
-            -- yellow = "#FACA64",
-            -- green = "#70CF67",
-            -- teal = "#4CD4BD",
-            -- sky = "#61BDFF",
-            -- sapphire = "#4BA8FA",
-            -- blue = "#00BFFF",
-            -- lavender = "#00BBCC",
-            -- text = "#C1C9E6",
-            -- subtext1 = "#A3AAC2",
-            -- subtext0 = "#8E94AB",
-            -- overlay2 = "#7D8296",
-            -- overlay1 = "#676B80",
-            -- overlay0 = "#464957",
-            -- surface2 = "#3A3D4A",
-            -- surface1 = "#2F313D",
-            -- surface0 = "#1D1E29",
             base = "#0b0b12",
             mantle = "#11111a",
             crust = "#191926",
@@ -103,7 +70,7 @@ return {
             enabled = true,
             indentscope_color = "",
           },
-          blink_cmp = true
+          blink_cmp = true,
         },
       })
     end,
@@ -111,13 +78,12 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha"
+      colorscheme = "catppuccin-mocha",
     },
   },
   {
     "craftzdog/solarized-osaka.nvim",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     opts = {},
   },
 }

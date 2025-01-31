@@ -1,26 +1,41 @@
 return {
   {
-    'saghen/blink.compat',
-    version = '*',
-    lazy = true,
-    opts = {},
-  },
-  {
-    'saghen/blink.cmp',
-    version = '0.*',
+    "saghen/blink.cmp",
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lua' },
+      "saghen/blink.compat",
+      "xzbdmw/colorful-menu.nvim",
     },
-    sources = {
+    opts = {
       completion = {
-        enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'nvim_lua' },
-      },
-      providers = {
-        nvim_lua = {
-          name = 'nvim_lua', 
-          module = 'blink.compat.source',
-          score_offset = -3,
-          opts = {},
+        ghost_text = { enabled = true },
+        menu = {
+          scrollbar = false,
+          draw = {
+            padding = 2,
+            columns = { { "kind_icon" }, { "label", gap = 1 } },
+            treesitter = { "lsp" },
+            components = {
+              kind_icon = {
+                ellipsis = false,
+                text = function(ctx)
+                  local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return kind_icon
+                end,
+                highlight = function(ctx)
+                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return hl
+                end,
+              },
+              label = {
+                text = function(ctx)
+                  return require("colorful-menu").blink_components_text(ctx)
+                end,
+                highlight = function(ctx)
+                  return require("colorful-menu").blink_components_highlight(ctx)
+                end,
+              },
+            },
+          },
         },
       },
     },
